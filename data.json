@@ -1,0 +1,23 @@
+{
+  "catalogo": {
+    "978-1": {
+      "isbn": "978-1",
+      "titulo": "Cien años de soledad",
+      "autor": "García Márquez",
+      "genero": "Novela",
+      "ejemplares_totales": 2,
+      "ejemplares_disponibles": 2
+    },
+    "978-2": {
+      "isbn": "978-2",
+      "titulo": "El túnel",
+      "autor": "Sábato",
+      "genero": "Novela",
+      "ejemplares_totales": 1,
+      "ejemplares_disponibles": 1
+    }
+  },
+  "usuarios": { "001": { "numero_socio": "001", "nombre": "Ana", "prestamos_activos": [] }
+  },
+  "prestamos": []
+}
