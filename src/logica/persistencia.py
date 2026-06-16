@@ -1,15 +1,23 @@
-from utils.constants import DATA_FILE
+from utils.models import Catalogo, Usuarios, Prestamos, DataBiblioteca
 import json
 
 # TODO: Parte de Diego
 
-def guardar_datos(catalogo, usuarios, prestamos, ruta):
-    data = dict(catalogo=catalogo, usuarios=usuarios, prestamos=prestamos)
-    print(data)
 
-def cargar_datos(ruta):
+def cargar_datos(ruta) -> DataBiblioteca:
     with open(ruta, 'r') as file:
         data = json.load(file)
-        return data.get("catalogo"), data.get("usuarios"), data.get("prestamos")
+        return {
+            "catalogo": data.get("catalogo", {}),
+            "usuarios": data.get("usuarios", {}),
+            "prestamos": data.get("prestamos", []),
+        }
 
-catalogo, usuarios, prestamos = cargar_datos(DATA_FILE)
+
+def guardar_datos(catalogo: Catalogo, usuarios: Usuarios, prestamos: Prestamos, ruta):
+    data = dict(catalogo=catalogo, usuarios=usuarios, prestamos=prestamos)
+
+    with open(ruta, 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=2, ensure_ascii=False)
+
+    return cargar_datos(ruta)

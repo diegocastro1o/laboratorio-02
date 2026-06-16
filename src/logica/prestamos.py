@@ -1,6 +1,15 @@
 from persistencia import catalogo, usuarios, prestamos
 from datetime import datetime, timedelta
-# TODO: Parte de Male
+
+# TODO: Agregar los models (tipado de entidades) en los parámetros de la función.
+#       Importar de `utils.models` solo los necesarios (ej: `from utils.models import Usuarios,...`)
+#       y aplicarlos a cada parametro (ej: `usuarios: Usuarios`)
+
+# TODO: El diccionario `nuevoPrestamo` definirlo por extensión. Ejm:
+#       nuevoPrestamo = {
+#       "isbn": isbn
+#       ...
+#       }
 
 def registrar_prestamo (catalogo, usuarios, prestamos, numero_socio, isbn, fecha_prestamo):
     if isbn not in catalogo or numero_socio not in usuarios :

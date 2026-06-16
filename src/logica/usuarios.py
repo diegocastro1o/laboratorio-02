@@ -1,8 +1,11 @@
-from persistencia import usuarios, prestamos
+from persistencia import USUARIOS, PRESTAMOS
 
-# TODO: Parte de Juanma
-print(usuarios)
-print(prestamos)
+# TODO: Agregar los models (tipado de entidades) en los parámetros de la función.
+#       Importar de `utils.models` solo los necesarios (ej: `from utils.models import Usuarios,...`)
+#       y aplicarlos a cada parametro (ej: `usuarios: Usuarios`)
+
+print(USUARIOS)
+print(PRESTAMOS)
 
 
 def registrar_usuario(usuarios, numero_socio, nombre):

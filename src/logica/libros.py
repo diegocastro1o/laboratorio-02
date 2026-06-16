@@ -1,6 +1,6 @@
-from persistencia import catalogo, prestamos
+from persistencia import CATALOGO, PRESTAMOS
 
 # TODO: Parte de Gonza
-print(catalogo)
-print(prestamos)
+print(CATALOGO)
+print(PRESTAMOS)
 
