@@ -19,13 +19,14 @@ def registrar_prestamo (catalogo, usuarios, prestamos, numero_socio, isbn, fecha
         print("Error: no hay ejemplares disponibles")
         
     else:
-        nuevoPrestamo = {}
-        fecha_limite = (datetime.strptime(fecha_prestamo, "%d/%m/%Y") + timedelta(days=7)).strftime("%d/%m/%Y")
-        nuevoPrestamo["numero_socio"] = numero_socio
-        nuevoPrestamo["isbn"] = isbn
-        nuevoPrestamo["fecha_prestamo"] = fecha_prestamo
-        nuevoPrestamo["fecha_limite"] = fecha_limite
-        nuevoPrestamo["devuelto"] = False
+        nuevoPrestamo = {
+        fecha_limite == (datetime.strptime(fecha_prestamo, "%d/%m/%Y") + timedelta(days=7)).strftime("%d/%m/%Y")
+        "numero_socio" = numero_socio
+        "isbn" = isbn
+        "fecha_prestamo" = fecha_prestamo
+        "fecha_limite" = fecha_limite
+        "devuelto" = False
+        }
         prestamos.append(nuevoPrestamo)
         
         catalogo[isbn]["ejemplares_disponibles"] -= 1
