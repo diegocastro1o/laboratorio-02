@@ -1,4 +1,5 @@
 from utils.models import Catalogo, Prestamos
+from logica.persistencia import guardar_datos
 def agregar_libro (catalogo:Catalogo, isbn:str, titulo:str, autor:str, genero:str, ejemplares:int):
     for id in catalogo:
         if id == isbn:
@@ -12,7 +13,7 @@ def agregar_libro (catalogo:Catalogo, isbn:str, titulo:str, autor:str, genero:st
         'ejemplares_disponibles': ejemplares
     }
     catalogo[isbn]=nuevo_libro
-    return catalogo
+    guardar_datos(catalogo)
 
 
 
@@ -22,7 +23,9 @@ def eliminar_libro (catalogo:Catalogo, prestamos:Prestamos, isbn:str):
     for pr in prestamos:
         if pr['ISBN']==isbn:
             return 'El libro tiene un prestamo pendiente. NO ES POSIBLE ELIMINAR'
-    return catalogo.pop(isbn)
+    catalogo.pop(isbn)
+    guardar_datos(catalogo=catalogo, prestamos=prestamos)
+
 
 def buscar_libros(catalogo:Catalogo, termino:str):
     lista_busqueda=[]
@@ -37,7 +40,8 @@ def buscar_libros(catalogo:Catalogo, termino:str):
             continue
         if termino == lib['autor']:
             lista_busqueda.append(lib)
-    return lista_busqueda
+    guardar_datos(catalogo)
+
 
 
 
