@@ -1,18 +1,210 @@
 {
   "catalogo": {
-    "978-1": {
-      "ISBN": "978-1",
+    "950-0": {
+      "ISBN": "950-0",
       "titulo": "Cien años de soledad",
       "autor": "García Márquez",
-      "genero": "Novela",
+      "genero": "Fantasía",
+      "ejemplares_totales": 5,
+      "ejemplares_disponibles": 4
+    },
+    "951-0": {
+      "ISBN": "951-0",
+      "titulo": "El túnel",
+      "autor": "Sábato",
+      "genero": "Drama",
+      "ejemplares_totales": 4,
+      "ejemplares_disponibles": 3
+    },
+    "952-0": {
+      "ISBN": "952-0",
+      "titulo": "Ficciones",
+      "autor": "Borges",
+      "genero": "Ficción",
+      "ejemplares_totales": 3,
+      "ejemplares_disponibles": 2
+    },
+    "953-0": {
+      "ISBN": "953-0",
+      "titulo": "Pedro Páramo",
+      "autor": "Rulfo",
+      "genero": "Fantasía",
+      "ejemplares_totales": 6,
+      "ejemplares_disponibles": 6
+    },
+    "954-0": {
+      "ISBN": "954-0",
+      "titulo": "Rayuela",
+      "autor": "Cortázar",
+      "genero": "Drama",
+      "ejemplares_totales": 4,
+      "ejemplares_disponibles": 4
+    },
+    "955-0": {
+      "ISBN": "955-0",
+      "titulo": "La isla misteriosa",
+      "autor": "Verne",
+      "genero": "Aventura",
       "ejemplares_totales": 5,
       "ejemplares_disponibles": 5
     },
-    "978-2": {
-      "ISBN": "978-2",
-      "titulo": "El túnel",
-      "autor": "Sábato",
-      "genero": "Novela",
+    "956-0": {
+      "ISBN": "956-0",
+      "titulo": "El sabueso",
+      "autor": "Doyle",
+      "genero": "Policial",
+      "ejemplares_totales": 4,
+      "ejemplares_disponibles": 3
+    },
+    "957-0": {
+      "ISBN": "957-0",
+      "titulo": "Orgullo y prejuicio",
+      "autor": "Austen",
+      "genero": "Romance",
+      "ejemplares_totales": 6,
+      "ejemplares_disponibles": 6
+    },
+    "958-0": {
+      "ISBN": "958-0",
+      "titulo": "La sombra",
+      "autor": "Navarro",
+      "genero": "Suspenso",
+      "ejemplares_totales": 5,
+      "ejemplares_disponibles": 5
+    },
+    "959-0": {
+      "ISBN": "959-0",
+      "titulo": "El guerrero",
+      "autor": "Salas",
+      "genero": "Acción",
+      "ejemplares_totales": 4,
+      "ejemplares_disponibles": 4
+    },
+    "960-0": {
+      "ISBN": "960-0",
+      "titulo": "El castillo",
+      "autor": "Kafka",
+      "genero": "Ficción",
+      "ejemplares_totales": 3,
+      "ejemplares_disponibles": 3
+    },
+    "961-0": {
+      "ISBN": "961-0",
+      "titulo": "La montaña azul",
+      "autor": "Pérez",
+      "genero": "Aventura",
+      "ejemplares_totales": 5,
+      "ejemplares_disponibles": 5
+    },
+    "962-0": {
+      "ISBN": "962-0",
+      "titulo": "Amor de verano",
+      "autor": "López",
+      "genero": "Romance",
+      "ejemplares_totales": 4,
+      "ejemplares_disponibles": 4
+    },
+    "963-0": {
+      "ISBN": "963-0",
+      "titulo": "El misterio del lago",
+      "autor": "Suárez",
+      "genero": "Policial",
+      "ejemplares_totales": 6,
+      "ejemplares_disponibles": 6
+    },
+    "964-0": {
+      "ISBN": "964-0",
+      "titulo": "Sombras nocturnas",
+      "autor": "Méndez",
+      "genero": "Suspenso",
+      "ejemplares_totales": 5,
+      "ejemplares_disponibles": 5
+    },
+    "965-0": {
+      "ISBN": "965-0",
+      "titulo": "El reino perdido",
+      "autor": "Torres",
+      "genero": "Fantasía",
+      "ejemplares_totales": 7,
+      "ejemplares_disponibles": 6
+    },
+    "966-0": {
+      "ISBN": "966-0",
+      "titulo": "La decisión",
+      "autor": "Gómez",
+      "genero": "Drama",
+      "ejemplares_totales": 4,
+      "ejemplares_disponibles": 4
+    },
+    "967-0": {
+      "ISBN": "967-0",
+      "titulo": "Operación final",
+      "autor": "Ruiz",
+      "genero": "Acción",
+      "ejemplares_totales": 5,
+      "ejemplares_disponibles": 4
+    },
+    "968-0": {
+      "ISBN": "968-0",
+      "titulo": "Historias cruzadas",
+      "autor": "Vega",
+      "genero": "Ficción",
+      "ejemplares_totales": 4,
+      "ejemplares_disponibles": 4
+    },
+    "969-0": {
+      "ISBN": "969-0",
+      "titulo": "Corazones distantes",
+      "autor": "Silva",
+      "genero": "Romance",
+      "ejemplares_totales": 6,
+      "ejemplares_disponibles": 5
+    },
+    "970-0": {
+      "ISBN": "970-0",
+      "titulo": "Starship Troopers",
+      "autor": "Heinlein",
+      "genero": "Ficción",
+      "ejemplares_totales": 5,
+      "ejemplares_disponibles": 5
+    },
+    "971-0": {
+      "ISBN": "971-0",
+      "titulo": "Time Enough for Love",
+      "autor": "Heinlein",
+      "genero": "Ficción",
+      "ejemplares_totales": 4,
+      "ejemplares_disponibles": 4
+    },
+    "972-0": {
+      "ISBN": "972-0",
+      "titulo": "The Moon Is a Harsh Mistress",
+      "autor": "Heinlein",
+      "genero": "Ficción",
+      "ejemplares_totales": 5,
+      "ejemplares_disponibles": 5
+    },
+    "973-0": {
+      "ISBN": "973-0",
+      "titulo": "Surely You’re Joking, Mr. Feynman!",
+      "autor": "Feynman",
+      "genero": "Biografía",
+      "ejemplares_totales": 3,
+      "ejemplares_disponibles": 3
+    },
+    "974-0": {
+      "ISBN": "974-0",
+      "titulo": "Antifragile",
+      "autor": "Taleb",
+      "genero": "Filosofía",
+      "ejemplares_totales": 3,
+      "ejemplares_disponibles": 3
+    },
+    "975-0": {
+      "ISBN": "975-0",
+      "titulo": "Zero to One",
+      "autor": "Thiel",
+      "genero": "Negocios",
       "ejemplares_totales": 4,
       "ejemplares_disponibles": 4
     }
@@ -21,15 +213,135 @@
     "001": {
       "numero_socio": "001",
       "nombre": "Ana",
+      "prestamos_activos": [
+        "951-0",
+        "952-0",
+        "965-0",
+        "950-0",
+        "969-0",
+        "956-0"
+      ]
+    },
+    "002": {
+      "numero_socio": "002",
+      "nombre": "Nahuel",
+      "prestamos_activos": []
+    },
+    "003": {
+      "numero_socio": "003",
+      "nombre": "Ignacio",
+      "prestamos_activos": [
+        "967-0"
+      ]
+    },
+    "004": {
+      "numero_socio": "004",
+      "nombre": "Juan",
+      "prestamos_activos": []
+    },
+    "009": {
+      "numero_socio": "009",
+      "nombre": "Hernan",
       "prestamos_activos": []
     }
   },
   "prestamos": [
     {
       "numero_socio": "001",
-      "ISBN": "978-2",
+      "ISBN": "950-0",
       "fecha_prestamo": "2026-06-17",
-      "fecha_limite": "2026-06-24",
+      "fecha_limite": "2026-07-02",
+      "devuelto": true
+    },
+    {
+      "numero_socio": "001",
+      "ISBN": "951-0",
+      "fecha_prestamo": "2026-05-01",
+      "fecha_limite": "2026-05-16",
+      "devuelto": false
+    },
+    {
+      "numero_socio": "001",
+      "ISBN": "952-0",
+      "fecha_prestamo": "2026-06-21",
+      "fecha_limite": "2026-07-06",
+      "devuelto": false
+    },
+    {
+      "numero_socio": "001",
+      "ISBN": "953-0",
+      "fecha_prestamo": "2026-04-10",
+      "fecha_limite": "2026-04-25",
+      "devuelto": true
+    },
+    {
+      "numero_socio": "001",
+      "ISBN": "965-0",
+      "fecha_prestamo": "2026-06-18",
+      "fecha_limite": "2026-07-03",
+      "devuelto": false
+    },
+    {
+      "numero_socio": "001",
+      "ISBN": "950-0",
+      "fecha_prestamo": "2026-06-19",
+      "fecha_limite": "2026-07-04",
+      "devuelto": false
+    },
+    {
+      "numero_socio": "001",
+      "ISBN": "957-0",
+      "fecha_prestamo": "2026-04-20",
+      "fecha_limite": "2026-05-05",
+      "devuelto": true
+    },
+    {
+      "numero_socio": "001",
+      "ISBN": "969-0",
+      "fecha_prestamo": "2026-06-16",
+      "fecha_limite": "2026-07-01",
+      "devuelto": false
+    },
+    {
+      "numero_socio": "001",
+      "ISBN": "956-0",
+      "fecha_prestamo": "2026-03-10",
+      "fecha_limite": "2026-03-25",
+      "devuelto": true
+    },
+    {
+      "numero_socio": "001",
+      "ISBN": "963-0",
+      "fecha_prestamo": "2026-05-05",
+      "fecha_limite": "2026-05-20",
+      "devuelto": true
+    },
+    {
+      "numero_socio": "001",
+      "ISBN": "956-0",
+      "fecha_prestamo": "2026-06-15",
+      "fecha_limite": "2026-06-30",
+      "devuelto": false
+    },
+    {
+      "numero_socio": "003",
+      "ISBN": "967-0",
+      "fecha_prestamo": "2026-06-22",
+      "fecha_limite": "2026-06-29",
+      "devuelto": false
+    },
+    {
+      "numero_socio": "004",
+      "ISBN": "970-0",
+      "fecha_prestamo": "2026-06-22",
+      "fecha_limite": "2026-06-29",
+      "devuelto": true
+    },
+    {
+      "numero_socio": "007",
+      "ISBN": "955-0",
+      "fecha_prestamo": "2026-06-22",
+      "fecha_limite": "2026-06-29",
       "devuelto": true
     }
   ]

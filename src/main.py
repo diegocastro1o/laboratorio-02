@@ -1,4 +1,4 @@
-from logica.persistencia import cargar_datos, guardar_datos
+from logica.persistencia import cargar_datos
 from utils.constants import DATA_FILE
 from views.menu_principal import menu_principal
 
@@ -7,6 +7,8 @@ prestamos, usuarios, catalogo = data['prestamos'], data['usuarios'], data['catal
 
 
 menu_principal(catalogo, usuarios, prestamos)
+
+
 
 
 

@@ -1,47 +1,135 @@
-from utils.models import Catalogo, Prestamos
+from logica.usuarios import historial_usuario
+from utils.helpers import mostrar_error, mostrar_exito
+from utils.models import Catalogo, Prestamos, Libro, Resultado
 from logica.persistencia import guardar_datos
-def agregar_libro (catalogo:Catalogo, isbn:str, titulo:str, autor:str, genero:str, ejemplares:int):
-    for id in catalogo:
-        if id == isbn:
-            return 'El libro ya esta registrado'
-    nuevo_libro = {
-        'ISBN': isbn,
-        'titulo': titulo,
-        'autor': autor,
-        'genero': genero,
-        'ejemplares_totales': ejemplares,
-        'ejemplares_disponibles': ejemplares
-    }
-    catalogo[isbn]=nuevo_libro
-    guardar_datos(catalogo)
+from random import randint
 
+def agregar_libro (catalogo:Catalogo, isbn:str, titulo:str, autor:str, genero:str, ejemplares:int):
+    try:
+        for id_libro in catalogo:
+            if id_libro == isbn:
+                raise Exception('El libro ya esta registrado')
+
+        nuevo_libro: Libro = {
+            'ISBN': isbn,
+            'titulo': titulo,
+            'autor': autor,
+            'genero': genero,
+            'ejemplares_totales': ejemplares,
+            'ejemplares_disponibles': ejemplares
+        }
+
+        catalogo[isbn]=nuevo_libro
+        guardar_datos(catalogo=catalogo)
+
+        mostrar_exito('El libro ha sido eliminado correctamente')
+
+    except Exception as e:
+        mostrar_error(str(e))
 
 
 def eliminar_libro (catalogo:Catalogo, prestamos:Prestamos, isbn:str):
-    if isbn not in catalogo:
-        return 'El libro no existe. NO ES POSIBLE ELIMINAR'
-    for pr in prestamos:
-        if pr['ISBN']==isbn:
-            return 'El libro tiene un prestamo pendiente. NO ES POSIBLE ELIMINAR'
-    catalogo.pop(isbn)
-    guardar_datos(catalogo=catalogo, prestamos=prestamos)
+    try:
+        if isbn not in catalogo:
+            raise Exception('El libro no existe. NO ES POSIBLE ELIMINAR')
+
+        for prestamo in prestamos:
+            if prestamo['ISBN']==isbn:
+                raise Exception('El libro tiene un préstamo pendiente. NO ES POSIBLE ELIMINAR')
+
+        catalogo.pop(isbn)
+        guardar_datos(catalogo=catalogo, prestamos=prestamos)
+
+        mostrar_exito('El libro ha sido eliminado correctamente')
+
+    except Exception as e:
+        mostrar_error(str(e))
 
 
 def buscar_libros(catalogo:Catalogo, termino:str):
-    lista_busqueda=[]
-    for lib in catalogo.values:
-        if lib in lista_busqueda:
-            continue
-        if termino == lib['titulo']:
-            lista_busqueda.append(lib)
-            continue
-        if termino == lib['genero']:
-            lista_busqueda.append(lib)
-            continue
-        if termino == lib['autor']:
-            lista_busqueda.append(lib)
-    guardar_datos(catalogo)
+    try:
+        lista_busqueda=[]
+        for libro in catalogo.values():
+
+            if libro in lista_busqueda:
+                continue
+
+            if termino in libro['titulo'].lower():
+                lista_busqueda.append(libro)
+                continue
+
+            if termino in libro['genero'].lower():
+                lista_busqueda.append(libro)
+                continue
+
+            if termino in libro['autor'].lower():
+                lista_busqueda.append(libro)
+
+        if not lista_busqueda:
+            raise Exception('Ningún libro coincide con lo solicitado')
+
+        return lista_busqueda
+
+    except Exception as e:
+        mostrar_error(str(e))
 
 
+def recomendar_libros(catalogo: Catalogo, prestamos: Prestamos, numero_socio: str, n: int):
+    try:
+        historial = historial_usuario(prestamos, numero_socio)
 
+        if not historial:
+            raise Exception(f'No tenemos información suficiente del usuario Nº{numero_socio}')
 
+        generos_leidos = dict()
+        for prestamo in historial:
+            isbn = prestamo["ISBN"]
+            genero = catalogo[isbn]["genero"]
+            generos_leidos[genero] = generos_leidos.get(genero, 0) + 1
+
+        generos_ordenados = []
+        for genero, qty in generos_leidos.items():
+            if not generos_ordenados:
+                generos_ordenados.append((genero, qty))
+                continue
+
+            insertado = False
+
+            for i in range(len(generos_ordenados)):
+                if qty > generos_ordenados[i][1]:
+                    generos_ordenados.insert(i, (genero, qty))
+                    insertado = True
+                    break
+
+            if not insertado:
+                generos_ordenados.append((genero, qty))
+
+        resultado = []
+        recomendaciones: Resultado = []
+
+        for libro in catalogo.values():
+            generos = []
+            for i in range(3):
+                if len(generos_ordenados) > i:
+                    generos.append(generos_ordenados[i][0])
+
+            if libro["genero"] in generos:
+                resultado.append(libro)
+
+        # TODO: agregar verificación para confirmar que el libro no haya sido leído por el usuario
+
+        if len(resultado) < n:
+            raise Exception(f"No hay {n} libros que se adapten a los gustos del usuario")
+
+        while len(recomendaciones) < n:
+            for libro in resultado:
+                if not len(recomendaciones) < n:
+                    break
+
+                if randint(0, 1):
+                    recomendaciones.append(libro)
+
+        return recomendaciones
+
+    except Exception as e:
+        mostrar_error(str(e))

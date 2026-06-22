@@ -1,10 +1,11 @@
 from utils.constants import DATA_FILE
 from utils.helpers import mostrar_exito
 from utils.models import Catalogo, Usuarios, Prestamos, DataBiblioteca
+from pathlib import Path
 import json
 
 
-def cargar_datos(ruta: str = DATA_FILE) -> DataBiblioteca:
+def cargar_datos(ruta: Path = DATA_FILE) -> DataBiblioteca:
     try:
         with open(ruta, 'r') as file:
             data = json.load(file)
@@ -31,7 +32,7 @@ def guardar_datos(
     catalogo: Catalogo | None = None,
     usuarios: Usuarios | None = None,
     prestamos: Prestamos | None = None,
-    ruta: str = DATA_FILE
+    ruta: Path = DATA_FILE
 ):
     try:
         with open(ruta, "r", encoding="utf-8") as file:

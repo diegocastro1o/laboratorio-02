@@ -25,6 +25,7 @@ class Prestamo(TypedDict):
 
 
 Catalogo: TypeAlias = dict[str, Libro]
+Resultado: TypeAlias = list[Libro]
 Usuarios: TypeAlias = dict[str, Usuario]
 Prestamos: TypeAlias = list[Prestamo]
 

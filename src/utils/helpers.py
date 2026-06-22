@@ -17,6 +17,7 @@ class Colores:
     ROJO = "\033[91m"
     VERDE = "\033[92m"
     AMARILLO = "\033[93m"
+    NARANJA = "\033[38;5;208m"
     AZUL = "\033[94m"
     CYAN = "\033[96m"
     NEGRITA = "\033[1m"
@@ -33,12 +34,12 @@ def linea(ancho=60):
     print("=" * ancho)
 
 
-def mostrar_titulo(titulo, subtitulo=""):
+def mostrar_titulo(titulo: str, subtitulo: str = ""):
     limpiar_pantalla()
-    print(Colores.CYAN + Colores.NEGRITA)
+    print(Colores.NARANJA + Colores.NEGRITA)
 
     linea()
-    print(titulo.center(60))
+    print(titulo.upper().center(60))
 
     if subtitulo:
         print(subtitulo.center(60))
@@ -47,11 +48,13 @@ def mostrar_titulo(titulo, subtitulo=""):
     print(Colores.RESET)
 
 
-def mostrar_error(mensaje):
+def mostrar_error(mensaje: str):
+    print()
     print(f"{Colores.ROJO}[ERROR]{Colores.RESET} {mensaje}")
 
 
-def mostrar_exito(mensaje):
+def mostrar_exito(mensaje: str):
+    print()
     print(f"{Colores.VERDE}[OK]{Colores.RESET} {mensaje}")
 
 
