@@ -5,12 +5,12 @@ from utils.models import Usuarios,Prestamos
 def registrar_usuario(usuarios: Usuarios, numero_socio: str, nombre: str):
     try:
         if numero_socio in usuarios:
-            raise Exception(f"Ya existe un usuario con el Nº {numero_socio}")
+            raise Exception(f'Ya existe un usuario con el Nº {numero_socio}')
 
         usuarios[numero_socio] = {
-            "numero_socio": numero_socio,
-            "nombre": nombre,
-            "prestamos_activos": []
+            'numero_socio': numero_socio,
+            'nombre': nombre,
+            'prestamos_activos': []
         }
 
         guardar_datos(usuarios=usuarios)
@@ -23,10 +23,10 @@ def registrar_usuario(usuarios: Usuarios, numero_socio: str, nombre: str):
 def dar_baja_usuario(usuarios:Usuarios, numero_socio:str):
     try:
         if numero_socio not in usuarios:
-            raise Exception("El Nº de socio ingresado no pertenece a ningún usuario existente")
+            raise Exception('El Nº de socio ingresado no pertenece a ningún usuario existente')
 
-        if usuarios[numero_socio]["prestamos_activos"]:
-            raise Exception("El usuario posee prestamos activos o vencidos")
+        if usuarios[numero_socio]['prestamos_activos']:
+            raise Exception('El usuario posee prestamos activos o vencidos')
 
         usuarios.pop(numero_socio)
         guardar_datos(usuarios=usuarios)
@@ -37,16 +37,19 @@ def dar_baja_usuario(usuarios:Usuarios, numero_socio:str):
 
 
 
-def historial_usuario(prestamos:Prestamos, numero_socio:str):
+def historial_usuario(prestamos:Prestamos, numero_socio:str, usuarios: Usuarios):
     try:
+        if numero_socio not in usuarios:
+            raise Exception(f'El usuario Nº{numero_socio} no existe')
+
         historial: Prestamos = []
 
         for prestamo in prestamos:
-            if prestamo["numero_socio"] == numero_socio:
+            if prestamo['numero_socio'] == numero_socio:
                 historial.append(prestamo)
 
         if not historial:
-            raise Exception("El usuario no ha solicitado ningún préstamo.")
+            raise Exception('El usuario no ha solicitado ningún préstamo.')
 
         return historial
 

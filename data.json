@@ -166,7 +166,7 @@
       "autor": "Heinlein",
       "genero": "Ficción",
       "ejemplares_totales": 5,
-      "ejemplares_disponibles": 5
+      "ejemplares_disponibles": 4
     },
     "971-0": {
       "ISBN": "971-0",
@@ -174,7 +174,7 @@
       "autor": "Heinlein",
       "genero": "Ficción",
       "ejemplares_totales": 4,
-      "ejemplares_disponibles": 4
+      "ejemplares_disponibles": 3
     },
     "972-0": {
       "ISBN": "972-0",
@@ -182,7 +182,7 @@
       "autor": "Heinlein",
       "genero": "Ficción",
       "ejemplares_totales": 5,
-      "ejemplares_disponibles": 5
+      "ejemplares_disponibles": 4
     },
     "973-0": {
       "ISBN": "973-0",
@@ -190,7 +190,7 @@
       "autor": "Feynman",
       "genero": "Biografía",
       "ejemplares_totales": 3,
-      "ejemplares_disponibles": 3
+      "ejemplares_disponibles": 2
     },
     "974-0": {
       "ISBN": "974-0",
@@ -198,7 +198,7 @@
       "autor": "Taleb",
       "genero": "Filosofía",
       "ejemplares_totales": 3,
-      "ejemplares_disponibles": 3
+      "ejemplares_disponibles": 2
     },
     "975-0": {
       "ISBN": "975-0",
@@ -206,7 +206,7 @@
       "autor": "Thiel",
       "genero": "Negocios",
       "ejemplares_totales": 4,
-      "ejemplares_disponibles": 4
+      "ejemplares_disponibles": 3
     }
   },
   "usuarios": {
@@ -243,6 +243,18 @@
       "numero_socio": "009",
       "nombre": "Hernan",
       "prestamos_activos": []
+    },
+    "021": {
+      "numero_socio": "021",
+      "nombre": "Diego",
+      "prestamos_activos": [
+        "970-0",
+        "971-0",
+        "972-0",
+        "973-0",
+        "974-0",
+        "975-0"
+      ]
     }
   },
   "prestamos": [
@@ -343,6 +355,48 @@
       "fecha_prestamo": "2026-06-22",
       "fecha_limite": "2026-06-29",
       "devuelto": true
+    },
+    {
+      "numero_socio": "021",
+      "ISBN": "970-0",
+      "fecha_prestamo": "2026-06-24",
+      "fecha_limite": "2026-07-01",
+      "devuelto": false
+    },
+    {
+      "numero_socio": "021",
+      "ISBN": "971-0",
+      "fecha_prestamo": "2026-06-24",
+      "fecha_limite": "2026-07-01",
+      "devuelto": false
+    },
+    {
+      "numero_socio": "021",
+      "ISBN": "972-0",
+      "fecha_prestamo": "2026-06-24",
+      "fecha_limite": "2026-07-01",
+      "devuelto": false
+    },
+    {
+      "numero_socio": "021",
+      "ISBN": "973-0",
+      "fecha_prestamo": "2026-06-24",
+      "fecha_limite": "2026-07-01",
+      "devuelto": false
+    },
+    {
+      "numero_socio": "021",
+      "ISBN": "974-0",
+      "fecha_prestamo": "2026-06-24",
+      "fecha_limite": "2026-07-01",
+      "devuelto": false
+    },
+    {
+      "numero_socio": "021",
+      "ISBN": "975-0",
+      "fecha_prestamo": "2026-06-24",
+      "fecha_limite": "2026-07-01",
+      "devuelto": false
     }
   ]
 }

@@ -7,25 +7,25 @@ import json
 
 def cargar_datos(ruta: Path = DATA_FILE) -> DataBiblioteca:
     try:
-        with open(ruta, 'r') as file:
+        with open(ruta, 'r', encoding='utf-8') as file:
             data = json.load(file)
             return {
-                "catalogo": data.get("catalogo", {}),
-                "usuarios": data.get("usuarios", {}),
-                "prestamos": data.get("prestamos", []),
+                'catalogo': data.get('catalogo', {}),
+                'usuarios': data.get('usuarios', {}),
+                'prestamos': data.get('prestamos', []),
             }
 
     except FileNotFoundError:
-        raise Exception("No se encontró el archivo de datos.")
+        raise Exception('No se encontró el archivo de datos.')
 
     except json.JSONDecodeError:
-        raise Exception("El archivo de datos no tiene un JSON válido.")
+        raise Exception('El archivo de datos no tiene un JSON válido.')
 
     except PermissionError:
-        raise Exception("No hay permisos para leer el archivo de datos.")
+        raise Exception('No hay permisos para leer el archivo de datos.')
 
     except OSError:
-        raise Exception("Ocurrió un error al cargar los datos.")
+        raise Exception('Ocurrió un error al cargar los datos.')
 
 
 def guardar_datos(
@@ -35,30 +35,29 @@ def guardar_datos(
     ruta: Path = DATA_FILE
 ):
     try:
-        with open(ruta, "r", encoding="utf-8") as file:
+        with open(ruta, 'r', encoding='utf-8') as file:
             data = json.load(file)
 
         if catalogo is not None:
-            data["catalogo"] = catalogo
+            data['catalogo'] = catalogo
         if usuarios is not None:
-            data["usuarios"] = usuarios
+            data['usuarios'] = usuarios
         if prestamos is not None:
-            data["prestamos"] = prestamos
+            data['prestamos'] = prestamos
 
-        with open(ruta, "w", encoding="utf-8") as file:
+        with open(ruta, 'w', encoding='utf-8') as file:
             json.dump(data, file, indent=2, ensure_ascii=False)
 
         mostrar_exito('Los cambios han sido persistidos exitosamente')
 
     except FileNotFoundError:
-        raise Exception("No se encontró el archivo de datos.")
+        raise Exception('No se encontró el archivo de datos.')
 
     except json.JSONDecodeError:
-        raise Exception("El archivo de datos no tiene un JSON válido.")
+        raise Exception('El archivo de datos no tiene un JSON válido.')
 
     except PermissionError:
-        raise Exception("No hay permisos para escribir el archivo de datos.")
+        raise Exception('No hay permisos para escribir el archivo de datos.')
 
     except OSError:
-        raise Exception("Ocurrió un error al guardar los datos.")
-
+        raise Exception('Ocurrió un error al guardar los datos.')

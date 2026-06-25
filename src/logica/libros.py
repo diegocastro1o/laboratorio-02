@@ -1,6 +1,6 @@
 from logica.usuarios import historial_usuario
-from utils.helpers import mostrar_error, mostrar_exito
-from utils.models import Catalogo, Prestamos, Libro, Resultado
+from utils.helpers import mostrar_error, mostrar_exito, normalizar
+from utils.models import Catalogo, Prestamos, Libro, Resultado, Usuarios
 from logica.persistencia import guardar_datos
 from random import randint
 
@@ -22,7 +22,7 @@ def agregar_libro (catalogo:Catalogo, isbn:str, titulo:str, autor:str, genero:st
         catalogo[isbn]=nuevo_libro
         guardar_datos(catalogo=catalogo)
 
-        mostrar_exito('El libro ha sido eliminado correctamente')
+        mostrar_exito('El libro ha sido agregado correctamente')
 
     except Exception as e:
         mostrar_error(str(e))
@@ -34,7 +34,7 @@ def eliminar_libro (catalogo:Catalogo, prestamos:Prestamos, isbn:str):
             raise Exception('El libro no existe. NO ES POSIBLE ELIMINAR')
 
         for prestamo in prestamos:
-            if prestamo['ISBN']==isbn:
+            if prestamo['ISBN'] == isbn and not prestamo['devuelto']:
                 raise Exception('El libro tiene un préstamo pendiente. NO ES POSIBLE ELIMINAR')
 
         catalogo.pop(isbn)
@@ -50,20 +50,15 @@ def buscar_libros(catalogo:Catalogo, termino:str):
     try:
         lista_busqueda=[]
         for libro in catalogo.values():
-
             if libro in lista_busqueda:
                 continue
 
-            if termino in libro['titulo'].lower():
-                lista_busqueda.append(libro)
-                continue
+            comparaciones = [normalizar(libro['titulo'].lower()), normalizar(libro['genero'].lower()), normalizar(libro['autor'].lower())]
 
-            if termino in libro['genero'].lower():
-                lista_busqueda.append(libro)
-                continue
-
-            if termino in libro['autor'].lower():
-                lista_busqueda.append(libro)
+            for comparacion in comparaciones:
+                if normalizar(termino) in comparacion:
+                    lista_busqueda.append(libro)
+                    continue
 
         if not lista_busqueda:
             raise Exception('Ningún libro coincide con lo solicitado')
@@ -74,18 +69,21 @@ def buscar_libros(catalogo:Catalogo, termino:str):
         mostrar_error(str(e))
 
 
-def recomendar_libros(catalogo: Catalogo, prestamos: Prestamos, numero_socio: str, n: int):
+def recomendar_libros(catalogo: Catalogo, prestamos: Prestamos, usuarios:Usuarios , numero_socio: str, n: int):
     try:
-        historial = historial_usuario(prestamos, numero_socio)
+        historial = historial_usuario(prestamos, numero_socio, usuarios)
 
         if not historial:
             raise Exception(f'No tenemos información suficiente del usuario Nº{numero_socio}')
 
         generos_leidos = dict()
+        libros_leidos = list()
         for prestamo in historial:
-            isbn = prestamo["ISBN"]
-            genero = catalogo[isbn]["genero"]
+            isbn = prestamo['ISBN']
+            genero = catalogo[isbn]['genero']
+
             generos_leidos[genero] = generos_leidos.get(genero, 0) + 1
+            libros_leidos.append(isbn)
 
         generos_ordenados = []
         for genero, qty in generos_leidos.items():
@@ -113,20 +111,18 @@ def recomendar_libros(catalogo: Catalogo, prestamos: Prestamos, numero_socio: st
                 if len(generos_ordenados) > i:
                     generos.append(generos_ordenados[i][0])
 
-            if libro["genero"] in generos:
+            if libro['genero'] in generos and libro['ISBN'] not in libros_leidos:
                 resultado.append(libro)
 
-        # TODO: agregar verificación para confirmar que el libro no haya sido leído por el usuario
-
         if len(resultado) < n:
-            raise Exception(f"No hay {n} libros que se adapten a los gustos del usuario")
+            raise Exception(f'No hay {n} libros que se adapten a los gustos del usuario')
 
         while len(recomendaciones) < n:
             for libro in resultado:
                 if not len(recomendaciones) < n:
                     break
 
-                if randint(0, 1):
+                if randint(0, 1) and libro not in recomendaciones:
                     recomendaciones.append(libro)
 
         return recomendaciones

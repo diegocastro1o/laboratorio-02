@@ -58,3 +58,6 @@ env.bak/
 .idea/
 *.swp
 *.swo
+
+# Archivos locales
+*.docx

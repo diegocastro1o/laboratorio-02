@@ -13,28 +13,28 @@ def normalizar(palabra):
 
 
 class Colores:
-    RESET = "\033[0m"
-    ROJO = "\033[91m"
-    VERDE = "\033[92m"
-    AMARILLO = "\033[93m"
-    NARANJA = "\033[38;5;208m"
-    AZUL = "\033[94m"
-    CYAN = "\033[96m"
-    NEGRITA = "\033[1m"
+    RESET = '\033[0m'
+    ROJO = '\033[91m'
+    VERDE = '\033[92m'
+    AMARILLO = '\033[93m'
+    NARANJA = '\033[38;5;208m'
+    AZUL = '\033[94m'
+    CYAN = '\033[96m'
+    NEGRITA = '\033[1m'
 
 
 def limpiar_pantalla():
-    if os.name == "nt":
-        os.system("cls")
-    elif os.environ.get("TERM"):
-        os.system("clear")
+    if os.name == 'nt':
+        os.system('cls')
+    elif os.environ.get('TERM'):
+        os.system('clear')
 
 
 def linea(ancho=60):
-    print("=" * ancho)
+    print('=' * ancho)
 
 
-def mostrar_titulo(titulo: str, subtitulo: str = ""):
+def mostrar_titulo(titulo: str, subtitulo: str = ''):
     limpiar_pantalla()
     print(Colores.NARANJA + Colores.NEGRITA)
 
@@ -50,16 +50,15 @@ def mostrar_titulo(titulo: str, subtitulo: str = ""):
 
 def mostrar_error(mensaje: str):
     print()
-    print(f"{Colores.ROJO}[ERROR]{Colores.RESET} {mensaje}")
+    print(f'{Colores.ROJO}[ERROR]{Colores.RESET} {mensaje}')
 
 
 def mostrar_exito(mensaje: str):
     print()
-    print(f"{Colores.VERDE}[OK]{Colores.RESET} {mensaje}")
+    print(f'{Colores.VERDE}[OK]{Colores.RESET} {mensaje}')
 
 
 def pausa():
-    input("\nPresione Enter para continuar...")
-
+    input('\nPresione Enter para continuar...')
 
 
